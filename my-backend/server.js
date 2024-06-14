@@ -1,8 +1,10 @@
+// server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const authRoutes = require('./routes/auth');
 const accountRoutes = require('./routes/account');
+const paymentRoutes = require('./routes/pagamentos'); // Adicione a referência aqui
 const authMiddleware = require('./middleware/auth');
 const bodyParser = require('body-parser');
 const app = express();
@@ -32,6 +34,7 @@ app.use('/api/protected', authMiddleware, (req, res) => {
     res.send('This is a protected route');
 });
 app.use('/api/account', authMiddleware, accountRoutes); // Use as rotas da conta protegidas pelo middleware de autenticação
+app.use('/api/pagamentos', authMiddleware, paymentRoutes); // Adicione as rotas de pagamentos aqui
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
