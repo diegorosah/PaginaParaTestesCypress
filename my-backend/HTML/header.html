@@ -1,14 +1,12 @@
 <div id="header">
-    <h1>Bem-vindo à sua conta, [Nome do Cliente]!</h1>
-
-    <!-- Informações da conta -->
+    <h2>Bem-vindo à sua conta, [Nome do Cliente]!</h2>
     <div class="account-info" id="accountInfo">
-        <div>
-            <h2>Saldo</h2>
+        <div class="d-flex align-items-center">
+            <h2 class="mr-2">Saldo:</h2>
+            <h2 id="saldo" class="mr-2">R$ 0,00</h2>
+            <button class="btn btn-custom-eye align-self-start" id="toggleBalanceBtn">
+                <i class="fas fa-eye-slash"></i>
+            </button>
         </div>
-        <p id="saldo">R$ 0,00</p>
-        <button class="btn btn-custom" id="toggleBalanceBtn">
-            <i class="fas fa-eye-slash"></i>
-        </button>
     </div>
 </div>

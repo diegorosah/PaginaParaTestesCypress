@@ -34,16 +34,18 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Código para a página principal
-    const extratoLink = document.getElementById('extrato');
-    if (extratoLink) {
-        extratoLink.addEventListener('click', function (e) {
-            e.preventDefault();
-            window.location.href = 'extrato.html'; // Redireciona para a página de extrato
-        });
-    }
 
     // Carrega o conteúdo da barra lateral e cabeçalho
-    $('#sidebar').load('sidebar.html');
+    $('#sidebar').load('sidebar.html', function () {
+        const extratoLink = document.getElementById('extrato');
+        if (extratoLink) {
+            extratoLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                window.location.href = 'extrato.html'; // Redireciona para a página de extrato
+            });
+        }
+    });
+
     $('#header').load('header.html', function () {
         // Após o carregamento do cabeçalho, busca o elemento saldo e atualiza
         saldoElement = document.querySelector('#saldo');

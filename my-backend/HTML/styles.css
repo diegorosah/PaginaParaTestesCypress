@@ -1,89 +1,168 @@
-        body {
-            background-color: #FFF5EE;
-        }
+body {
+    background-color: #FFF5EE;
+    align-items: start;
+}
 
-        .sidebar {
-            height: 100%;
-            width: 250px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background-color: #343a40;
-            color: #ffffff;
-            padding-top: 20px;
-        }
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #343a40;
+    color: #ffffff;
+    padding-top: 20px;
+}
 
-        .sidebar .nav-link {
-            color: #ffffff;
-            font-weight: bold;
-        }
+.sidebar .nav-link {
+    color: #ffffff;
+    font-weight: bold;
+}
 
-        .sidebar .nav-link:hover {
-            color: #ffc107;
-        }
+.sidebar .nav-link:hover {
+    color: #ffc107;
+}
 
-        .sidebar .dropdown-menu {
-            background-color: #343a40;
-            border: none;
-        }
+.sidebar .dropdown-menu {
+    background-color: #343a40;
+    border: none;
+}
 
-        .sidebar .dropdown-item {
-            color: #ffffff;
-        }
+.sidebar .dropdown-item {
+    color: #ffffff;
+}
 
-        .sidebar .dropdown-item:hover {
-            color: #ffc107;
-        }
+.sidebar .dropdown-item:hover {
+    color: #ffc107;
+}
 
-        .content {
-            margin-left: 250px;
-            padding: 20px;
-            background-color: #FFF5EE;
-        }
+.content {
+    margin-left: 250px;
+    padding: 20px;
+    color: white;
 
-        .account-info {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 20px;
-            margin-bottom: 20px;
-            background-color: #343a40;
-            color: #ffffff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+}
 
-        .offers {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 20px;
-            background-color: #343a40;
-            color: #ffffff;
-        }
+.account-info {
+    background-color: #343a40;
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Alterado para "center" para alinhar verticalmente */
+}
 
-        .btn-custom {
-            background-color: #d9534f;
-            color: #343a40;
-            border: 2px solid #343a40;
-        }
+.offers {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    background-color: #343a40;
+    color: #ffffff;
+}
 
-        .btn-custom:hover {
-            background-color: #c9302c;
-            color: #ffffff;
-        }
+.btn-custom:hover {
+    background-color: #c9302c;
+    color: #ffffff;
+}
 
-        body,
-        html {
-            height: 100%;
-            display: flex;
-            background-color: #f8f9fa;
-        }
+.content {
+    min-height: 100%;
+    padding-bottom: 100px;
+    /* Altura do rodapé */
+}
 
-        .login-container {
-            width: 100%;
-            max-width: 400px;
-            padding: 20px;
-            background: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-        }
+.login-container {
+    max-width: 400px;
+    align-items: center;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.container {
+    color: white;
+    background-color: #343a40;
+    padding: 20px;
+
+    border-radius: 5px;
+}
+
+.row {
+    margin-bottom: 15px;
+}
+
+.col-3 {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.col-5 {
+    display: flex;
+    align-items: center;
+}
+
+.col-4 {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.text-center {
+    color: white;
+}
+
+.form-control {
+    border-radius: 5px;
+}
+
+.col-12.text-center h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: white;
+    text-align: start;
+    margin-bottom: 20px;
+}
+
+.btn-custom {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+}
+
+.btn-custom-eye {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.list-group-item {
+    background-color: #444;
+    color: white;
+    border: 1px solid #555;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+#header {
+    padding: 20px;
+    background-color: #343a40;
+    border-radius: 5px;
+    color: white;
+}
+
+.full-width-container {
+    align-items: start;
+    width: 100%;
+    background-color: #343a40;
+}
