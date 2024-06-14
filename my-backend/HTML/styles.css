@@ -1,0 +1,89 @@
+        body {
+            background-color: #FFF5EE;
+        }
+
+        .sidebar {
+            height: 100%;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #343a40;
+            color: #ffffff;
+            padding-top: 20px;
+        }
+
+        .sidebar .nav-link {
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .sidebar .nav-link:hover {
+            color: #ffc107;
+        }
+
+        .sidebar .dropdown-menu {
+            background-color: #343a40;
+            border: none;
+        }
+
+        .sidebar .dropdown-item {
+            color: #ffffff;
+        }
+
+        .sidebar .dropdown-item:hover {
+            color: #ffc107;
+        }
+
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            background-color: #FFF5EE;
+        }
+
+        .account-info {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #343a40;
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .offers {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            background-color: #343a40;
+            color: #ffffff;
+        }
+
+        .btn-custom {
+            background-color: #d9534f;
+            color: #343a40;
+            border: 2px solid #343a40;
+        }
+
+        .btn-custom:hover {
+            background-color: #c9302c;
+            color: #ffffff;
+        }
+
+        body,
+        html {
+            height: 100%;
+            display: flex;
+            background-color: #f8f9fa;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }

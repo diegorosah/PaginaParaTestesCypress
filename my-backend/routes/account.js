@@ -1,29 +1,20 @@
-// routes/account.js
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const Account = require('../models/Account');
-
-// Middleware para verificar o token JWT
 const authMiddleware = require('../middleware/auth');
 
 // Adicionar saldo à conta
 router.post('/add-saldo', authMiddleware, async (req, res) => {
     const { valor } = req.body;
-    const userId = req.userId; // Obtendo o ID do usuário do token
-    console.log('Adicionar saldo para o usuário:', userId, 'Valor:', valor); // Log para depuração
+    const userId = req.userId;
 
     try {
-        // Verificar se o userId e o valor foram fornecidos
-        // if (!valor) {
-        //     return res.status(400).json({ success: false, message: 'Parâmetros inválidos' });
-        // }
-        // Procurar a conta do usuário
         let account = await Account.findOne({ userId });
         if (!account) {
             return res.status(404).json({ success: false, message: 'Conta não encontrada' });
         }
-        // Adicionar saldo e registro no extrato
+
         account.saldo += parseFloat(valor);
         account.extrato.push({ descricao: 'Depósito', valor: parseFloat(valor) });
         await account.save();
@@ -35,11 +26,10 @@ router.post('/add-saldo', authMiddleware, async (req, res) => {
     }
 });
 
-
 // Cobrar conta da conta
 router.post('/cobrar-conta', authMiddleware, async (req, res) => {
     const { valor, descricao } = req.body;
-    const userId = req.userId; // Obtendo o ID do usuário do token
+    const userId = req.userId;
 
     try {
         let account = await Account.findOne({ userId });
@@ -64,7 +54,7 @@ router.post('/cobrar-conta', authMiddleware, async (req, res) => {
 
 // Obter extrato da conta
 router.get('/extrato', authMiddleware, async (req, res) => {
-    const userId = req.userId; // Obtendo o ID do usuário do token
+    const userId = req.userId;
 
     try {
         const account = await Account.findOne({ userId });
@@ -79,6 +69,7 @@ router.get('/extrato', authMiddleware, async (req, res) => {
     }
 });
 
+// Obter saldo da conta
 router.get('/saldo', authMiddleware, async (req, res) => {
     const userId = req.userId;
 
