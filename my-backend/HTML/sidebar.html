@@ -1,26 +1,45 @@
-<!-- Conteúdo do sidebar.html -->
-<ul class="sidebar">
-    <li class="nav-item">
-        <a class="nav-link" id="home" href="main.html">Home</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="extrato" href="#">Extrato</a>
-    </li>
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="emprestimosDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">Empréstimos</a>
-        <div class="dropdown-menu" aria-labelledby="emprestimosDropdown">
-            <a class="dropdown-item" href="#">Pessoal</a>
-            <a class="dropdown-item" href="#">Consignado</a>
-        </div>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">Investimentos</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">Financiamentos</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#" id="logoutBtn">Logout</a>
-    </li>
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Corrija o caminho para o arquivo styles.css -->
+    <script src="../scripts/sidebar.js"></script>
+</head>
+
+<body>
+    <!-- Conteúdo do sidebar.html -->
+    <ul class="sidebar">
+        <li class="nav-item">
+            <a class="nav-link" id="home" href="main.html">Home</a> <!-- Corrija o caminho para main.html -->
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="extrato" href="#">Extrato</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="emprestimosDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">Empréstimos</a>
+            <div class="dropdown-menu" aria-labelledby="emprestimosDropdown">
+                <a class="dropdown-item" href="#">Pessoal</a>
+                <a class="dropdown-item" href="#">Consignado</a>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Investimentos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Financiamentos</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="dadosUsuario.html" id="userData">Dados Usuário</a>
+            <!-- Corrija o caminho para dadosUsuario.html -->
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" id="logoutBtn">Logout</a>
+        </li>
+    </ul>
+</body>
+
+</html>

@@ -33,19 +33,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Código para a página principal
-
-    // Carrega o conteúdo da barra lateral e cabeçalho
-    $('#sidebar').load('sidebar.html', async function () {
-        const extratoLink = document.getElementById('extrato');
-        if (extratoLink) {
-            extratoLink.addEventListener('click', function (e) {
-                e.preventDefault();
-                window.location.href = 'extrato.html'; // Redireciona para a página de extrato
-            });
-        }
-    });
-
     // Carrega os dados do extrato quando o link de extrato for clicado
     $(document).ready(async function () {
         // Carregar extrato quando a página estiver pronta
@@ -379,5 +366,58 @@ document.addEventListener('DOMContentLoaded', function () {
             window.location.href = 'login.html';
         });
     }
+
+    //Cadastro usuario
+    $(document).ready(function () {
+        $('#cadastroForm').on('submit', function (event) {
+            event.preventDefault();
+
+            const token = localStorage.getItem('token');
+            if (!token) {
+                console.error('Token de autenticação não encontrado');
+                return;
+            }
+
+            const formData = {
+                nome: $('#nome').val(),
+                dataNascimento: $('#dataNascimento').val(),
+                cpf: $('#cpf').val(),
+                endereco: $('#endereco').val(),
+                telefone: $('#telefone').val(),
+                email: $('#email').val(),
+                estadoCivil: $('#estadoCivil').val(),
+                ocupacao: $('#ocupacao').val(),
+                renda: $('#renda').val(),
+                escolaridade: $('#escolaridade').val(),
+                numeroConta: $('#numeroConta').val(),
+                preferenciasContato: $('#preferenciasContato').val(),
+                preferenciasProdutos: $('#preferenciasProdutos').val(),
+            };
+
+            fetch('/api/usuarios/cadastrar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                },
+                body: JSON.stringify(formData)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Erro ao cadastrar dados do usuário');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    alert('Dados cadastrados com sucesso!');
+                    window.location.reload();
+                })
+                .catch(error => {
+                    console.error('Erro ao cadastrar dados do usuário:', error);
+                    alert('Erro ao cadastrar dados do usuário. Por favor, tente novamente.');
+                });
+        });
+    });
+
 
 });

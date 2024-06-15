@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar"></div>
+    <div class="content">
+        <div class="container mt-5">
+            <h2 class="text-center">Cadastro de Usuário</h2>
+            <form id="cadastroForm">
+                <!-- Tipo de Pessoa -->
+                <div class="form-group">
+                    <label for="tipoPessoa">Tipo de Pessoa:</label>
+                    <select class="form-control" id="tipoPessoa" name="tipoPessoa" required>
+                        <option value="Fisica">Física</option>
+                        <option value="Juridica">Jurídica</option>
+                    </select>
+                </div>
+                <!-- Campos comuns -->
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input type="text" class="form-control" id="nome" name="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="dataNascimento">Data de Nascimento:</label>
+                    <input type="date" class="form-control" id="dataNascimento" name="dataNascimento" required>
+                </div>
+                <div class="form-group">
+                    <label for="cpf">CPF:</label>
+                    <input type="text" class="form-control" id="cpf" name="cpf" required>
+                </div>
+                <div class="form-group">
+                    <label for="cep">CEP:</label>
+                    <input type="text" class="form-control" id="cep" name="cep" required>
+                </div>
+                <div class="form-group">
+                    <label for="endereco">Endereço:</label>
+                    <input type="text" class="form-control" id="endereco" name="endereco" required>
+                </div>
+                <div class="form-group">
+                    <label for="numero">Número:</label>
+                    <input type="text" class="form-control" id="numero" name="numero" required>
+                </div>
+                <div class="form-group">
+                    <label for="complemento">Complemento:</label>
+                    <input type="text" class="form-control" id="complemento" name="complemento">
+                </div>
+                <div class="form-group">
+                    <label for="cidade">Cidade:</label>
+                    <input type="text" class="form-control" id="cidade" name="cidade" required>
+                </div>
+                <div class="form-group">
+                    <label for="estado">Estado:</label>
+                    <input type="text" class="form-control" id="estado" name="estado" required>
+                </div>
+                <div class="form-group">
+                    <label for="pais">País:</label>
+                    <input type="text" class="form-control" id="pais" name="pais" required>
+                </div>
+                <div class="form-group">
+                    <label for="estadoCivil">Estado Civil:</label>
+                    <select class="form-control" id="estadoCivil" name="estadoCivil" required>
+                        <option value="">Selecione</option>
+                        <option value="Solteiro">Solteiro</option>
+                        <option value="Casado">Casado</option>
+                        <option value="Divorciado">Divorciado</option>
+                        <option value="Viúvo">Viúvo</option>
+                    </select>
+                </div>
+                <div class="form-group" id="conjugeFields" style="display: none;">
+                    <label for="nomeConjuge">Nome do Cônjuge:</label>
+                    <input type="text" class="form-control" id="nomeConjuge" name="nomeConjuge">
+                    <label for="cpfConjuge">CPF do Cônjuge:</label>
+                    <input type="text" class="form-control" id="cpfConjuge" name="cpfConjuge">
+                </div>
+                <div class="form-group">
+                    <label for="preferenciasProdutos">Preferências de Produtos:</label><br>
+                    <input type="checkbox" id="financiamentos" name="preferenciasProdutos" value="Financiamentos">
+                    Financiamentos<br>
+                    <input type="checkbox" id="emprestimos" name="preferenciasProdutos" value="Empréstimos">
+                    Empréstimos<br>
+                    <input type="checkbox" id="cartoes" name="preferenciasProdutos" value="Cartões"> Cartões<br>
+                </div>
+                <!-- Campos específicos para pessoa jurídica -->
+                <div id="juridicaFields" style="display: none;">
+                    <div class="form-group">
+                        <label for="cnpj">CNPJ:</label>
+                        <input type="text" class="form-control" id="cnpj" name="cnpj">
+                    </div>
+                    <div class="form-group">
+                        <label for="nomeEmpresa">Nome da Empresa:</label>
+                        <input type="text" class="form-control" id="nomeEmpresa" name="nomeEmpresa">
+                    </div>
+                    <div class="form-group">
+                        <label for="setorAtuacao">Setor de Atuação:</label>
+                        <input type="text" class="form-control" id="setorAtuacao" name="setorAtuacao">
+                    </div>
+                </div>
+                <!-- Botão de submit -->
+                <button type="submit" id="cadastrarBtn" class="btn btn-primary">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="scripts/cadastro.js"></script>
+<script src="../scripts/sidebar.js"></script>
+
+</html>
