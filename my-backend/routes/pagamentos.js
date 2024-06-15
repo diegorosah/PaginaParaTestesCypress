@@ -43,5 +43,47 @@ router.post('/pagamentos', authMiddleware, async (req, res) => {
     }
 });
 
+router.post('/pagamentos/:id/pagar', authMiddleware, async (req, res) => {
+    const userId = req.userId;
+    const pagamentoId = req.params.id;
+
+    try {
+        const pagamento = await Pagamento.findOne({ _id: pagamentoId, userId });
+
+        if (!pagamento) {
+            return res.status(404).json({ success: false, message: 'Pagamento não encontrado' });
+        }
+
+        if (pagamento.pago) {
+            return res.status(400).json({ success: false, message: 'Pagamento já foi realizado' });
+        }
+
+        // Chamar a rota de cobrança para debitar o valor da conta do usuário
+        const response = await fetch('http://localhost:3000/api/account/cobrar-conta', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': req.header('Authorization')
+            },
+            body: JSON.stringify({
+                valor: pagamento.valor,
+                descricao: `Pagamento de ${pagamento.descricao}`
+            })
+        });
+
+        if (!response.ok) {
+            const errorResponse = await response.json();
+            return res.status(response.status).json({ success: false, message: errorResponse.message });
+        }
+
+        pagamento.pago = true;
+        await pagamento.save();
+
+        res.json({ success: true, message: 'Pagamento realizado com sucesso!' });
+    } catch (error) {
+        console.error('Erro ao processar pagamento:', error);
+        res.status(500).json({ success: false, message: 'Erro ao processar pagamento. Por favor, tente novamente.' });
+    }
+});
 
 module.exports = router;

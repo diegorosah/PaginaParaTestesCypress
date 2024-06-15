@@ -1,0 +1,86 @@
+<!-- Próximos Pagamentos -->
+<div class="container-fluid mt-4 full-width-container">
+    <div class="row">
+        <div class="col-12">
+            <ul>
+                <p></p>
+            </ul>
+            <h2 class="text-center mb-4">Próximos Pagamentos</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <ul class="list-group" id="pagamentosList">
+            </ul>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <button class="btn btn-custom w-100" id="schedulePaymentBtn" data-toggle="modal"
+                data-target="#agendarPagamentoModal">Agendar Pagamento</button>
+            <ul>
+                <p></p>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal para Agendar Pagamentos -->
+<div class="modal fade" id="agendarPagamentoModal" tabindex="-1" role="dialog"
+    aria-labelledby="agendarPagamentoModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="agendarPagamentoModalLabel">Agendar Pagamento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="agendarPagamentoForm">
+                    <div class="form-group">
+                        <label for="descricao">Descrição:</label>
+                        <input type="text" class="form-control" id="descricao" name="descricao"
+                            placeholder="Descrição do pagamento" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="valor">Valor:</label>
+                        <input type="number" class="form-control" id="valor" name="valor"
+                            placeholder="Valor do pagamento" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="vencimento">Data de Vencimento:</label>
+                        <input type="date" class="form-control" id="vencimento" name="vencimento" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-custom" id="agendarPagamentoBtn">Salvar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Confirmação de Pagamento -->
+<div class="modal fade" id="confirmarPagamentoModal" tabindex="-1" role="dialog"
+    aria-labelledby="confirmarPagamentoModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmarPagamentoModalLabel">Confirmar Pagamento</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Tem certeza de que deseja realizar este pagamento?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-custom" id="confirmarPagamentoBtn">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>

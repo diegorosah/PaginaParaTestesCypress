@@ -7,6 +7,10 @@ body {
     color: white;
 }
 
+.modal-body {
+    color: #343a40;
+}
+
 .sidebar {
     height: 100%;
     width: 250px;

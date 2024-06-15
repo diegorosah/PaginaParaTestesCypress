@@ -42,7 +42,7 @@ router.post('/cobrar-conta', authMiddleware, async (req, res) => {
         }
 
         account.saldo -= parseFloat(valor);
-        account.extrato.push({ descricao: descricao, valor: -parseFloat(valor) });
+        account.extrato.push({ descricao, valor: -parseFloat(valor) });
         await account.save();
 
         res.json({ success: true, message: 'Conta cobrada com sucesso' });
