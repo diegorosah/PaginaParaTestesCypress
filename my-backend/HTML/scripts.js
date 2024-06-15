@@ -394,7 +394,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 preferenciasProdutos: $('#preferenciasProdutos').val(),
             };
 
-            fetch('/api/usuarios/cadastrar', {
+            fetch('/api/cadastro/cadastrar', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

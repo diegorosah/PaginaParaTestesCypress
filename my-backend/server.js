@@ -4,7 +4,7 @@ const cors = require('cors');
 const authRoutes = require('./routes/auth');
 const accountRoutes = require('./routes/account');
 const paymentRoutes = require('./routes/pagamentos');
-const userRoutes = require('./routes/user');
+const cadastroRoutes = require('./routes/cadastro');
 const authMiddleware = require('./middleware/auth');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -37,7 +37,8 @@ app.use('/api/protected', authMiddleware, (req, res) => {
 //usuarios e dados dos usuarios
 app.use('/api/account', authMiddleware, accountRoutes);
 app.use('/api/pagamentos', authMiddleware, paymentRoutes);
-app.use('/api/usuarios', authMiddleware, userRoutes);
+// Corrija o caminho para as rotas de cadastro
+app.use('/api/cadastro', authMiddleware, cadastroRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
