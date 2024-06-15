@@ -44,7 +44,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 window.location.href = 'extrato.html'; // Redireciona para a página de extrato
             });
         }
+    });
 
+    // Carrega os dados do extrato quando o link de extrato for clicado
+    $(document).ready(async function () {
+        // Carregar extrato quando a página estiver pronta
         const extratoList = document.getElementById('extratoList');
         if (!extratoList) {
             console.error('Elemento extratoList não encontrado');
@@ -91,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('Erro ao buscar extrato. Verifique a conexão com o servidor e tente novamente.');
         }
     });
+
 
     $('#header').load('header.html', function () {
         // Após o carregamento do cabeçalho, busca o elemento saldo e atualiza

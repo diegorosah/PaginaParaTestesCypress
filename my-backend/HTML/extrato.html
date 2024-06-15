@@ -11,27 +11,35 @@
 </head>
 
 <body>
-    <table>
-        <thead>
-            <tr>
-                <th>Data</th>
-                <th>Descrição</th>
-                <th>Valor</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>2024-06-01</td>
-                <td>Depósito</td>
-                <td>R$ 1000,00</td>
-            </tr>
-            <tr>
-                <td>2024-06-02</td>
-                <td>Compra Supermercado</td>
-                <td>- R$ 200,00</td>
-            </tr>
-            <!-- Adicione mais linhas conforme necessário -->
-        </tbody>
-    </table>
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar"></div>
+
+    <!-- Conteúdo Principal -->
+    <div class="content">
+        <div id="header"></div>
+
+        <!-- Extrato -->
+        <div class="container-fluid mt-4 full-width-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th style="color: white;">Data</th>
+                        <th style="color: white;">Descrição</th>
+                        <th style="color: white;">Valor</th>
+                    </tr>
+                </thead>
+                <tbody id="extratoList" style="color: white;">
+                    <!-- Linhas do extrato serão adicionadas aqui -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- JavaScript do Bootstrap e jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="scripts.js"></script>
 </body>
-<script src="scripts.js"></script>
+
+</html>
