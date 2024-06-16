@@ -1,0 +1,33 @@
+<body>
+    <div class="content">
+        <div class="container-fluid mt-4 full-width-container">
+            <h1>Inserir Histórico Bancário</h1>
+            <form id="historicoForm">
+                <label for="tipo">Tipo:</label>
+                <select name="tipo" id="tipo">
+                    <option value="entrada">Entrada</option>
+                    <option value="saída">Saída</option>
+                </select><br><br>
+                <label for="periodo">Período (anos):</label>
+                <input type="number" name="periodo" id="periodo" min="1" required><br><br>
+                <label for="frequencia">Frequência:</label>
+                <select name="frequencia" id="frequencia">
+                    <option value="mensal">Mensal</option>
+                    <option value="bimestral">Bimestral</option>
+                    <option value="trimestral">Trimestral</option>
+                    <option value="semestral">Semestral</option>
+                    <option value="anual">Anual</option>
+                </select><br><br>
+                <label for="valor">Valor:</label>
+                <input type="number" name="valor" id="valor" min="0" required><br><br>
+                <label for="dataInicio">Data Início:</label>
+                <input type="date" name="dataInicio" id="dataInicio" required><br><br>
+                <button class="btn-custom" type="submit">Inserir</button>
+                <br></br>
+            </form>
+
+        </div>
+    </div>
+</body>
+
+</html>

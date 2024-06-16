@@ -1,0 +1,35 @@
+<body>
+    <div class="content">
+        <div class="container-fluid mt-4 full-width-container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Inserir Dívidas</h1>
+                </div>
+            </div>
+            <form id="dividaForm">
+                <label for="status">Status:</label>
+                <select name="status" id="status">
+                    <option value="em dia">Em Dia</option>
+                    <option value="inadimplente">Inadimplente</option>
+                    <option value="caducada">Caducada</option>
+                    <option value="negociada">Negociada</option>
+                </select><br><br>
+                <label for="valorTotal">Valor Total:</label>
+                <input type="number" name="valorTotal" id="valorTotal" min="0" required><br><br>
+                <label for="valorParcela">Valor das Parcelas:</label>
+                <input type="number" name="valorParcela" id="valorParcela" min="0" required><br><br>
+                <label for="dataInicial">Data Inicial:</label>
+                <input type="date" name="dataInicial" id="dataInicial" required><br><br>
+                <label for="dataFinal">Data Final:</label>
+                <input type="date" name="dataFinal" id="dataFinal" required><br><br>
+                <label for="qtdParcelas">Quantidade de Parcelas:</label>
+                <input type="number" name="qtdParcelas" id="qtdParcelas" min="1" required><br><br>
+                <button class="btn-custom" type="submit">Inserir</button>
+                <br></br>
+            </form>
+
+        </div>
+    </div>
+</body>
+
+</html>

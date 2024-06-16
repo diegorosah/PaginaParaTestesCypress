@@ -5,6 +5,8 @@ const authRoutes = require('./routes/auth');
 const accountRoutes = require('./routes/account');
 const paymentRoutes = require('./routes/pagamentos');
 const cadastroRoutes = require('./routes/cadastro');
+const dividaRoutes = require('./routes/dividas');
+const historicoRoutes = require('./routes/historicoBancario');
 const authMiddleware = require('./middleware/auth');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -29,15 +31,19 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'HTML', 'login.html'));
 });
 
-// Rotas para autenticação e contas
+// Adicionando rotas para divida e historico
+app.use('/api/divida', dividaRoutes);
+app.use('/api/historico', historicoRoutes);
+
+// Rotas de autenticação e protegidas
 app.use('/api', authRoutes);
 app.use('/api/protected', authMiddleware, (req, res) => {
     res.send('This is a protected route');
 });
-//usuarios e dados dos usuarios
+
+// Rotas de conta, pagamentos e cadastro
 app.use('/api/account', authMiddleware, accountRoutes);
 app.use('/api/pagamentos', authMiddleware, paymentRoutes);
-// Corrija o caminho para as rotas de cadastro
 app.use('/api/cadastro', authMiddleware, cadastroRoutes);
 
 app.listen(PORT, () => {

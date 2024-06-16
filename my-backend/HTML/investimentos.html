@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Ações</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar"></div>
+    <div class="content">
+        <div class="container-fluid mt-4 full-width-container">
+            <h1>Dashboard de Ações</h1>
+            <div id="marketStatus" class="mb-3"></div>
+            <div class="form-group">
+                <label for="stockSelector">Selecione as ações:</label>
+                <input type="text" id="stockSelector" class="form-control" placeholder="Ex: AAPL, MSFT, GOOGL">
+            </div>
+            <button id="loadStocks" class="btn btn-primary">Carregar Ações</button>
+            <div id="chartsContainer" class="mt-4"></div>
+            <div class="form-group mt-4">
+                <label for="buyAmount">Valor da Compra:</label>
+                <input type="number" id="buyAmount" class="form-control" placeholder="Digite o valor">
+                <button id="buyButton" class="btn btn-success mt-2">Comprar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@2.23.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.js"></script>
+    <script src="../scripts/sidebar.js"></script>
+    <script src="../scripts/dashboard.js"></script>
+</body>
+
+</html>
