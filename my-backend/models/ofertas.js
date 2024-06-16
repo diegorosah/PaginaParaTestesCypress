@@ -4,10 +4,9 @@ const ofertaSchema = new mongoose.Schema({
     userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // Referência ao usuário
     idOferta: Number,
     tipoProduto: { type: String, enum: ['Emprestimo', 'Financiamento'] },
-    valorMinimo: Number,
-    valorMaximo: Number,
-    minParcelas: Number,
-    maxParcelas: Number,
+    valorMinimoEntrada: Number,
+    valorTotalPermitido: Number,
+    qtdParcelas: Number,
     txJuros: Number,
 });
 

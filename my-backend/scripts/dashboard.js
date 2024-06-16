@@ -1,6 +1,5 @@
 // Certifique-se de que o jQuery está carregado corretamente antes de usar
 $(document).ready(function () {
-    const apiKey = 'D8QYQEK7RLTHPTFT'; // Sua chave de API
 
     // Função para carregar dados das ações selecionadas
     async function loadStockData(symbols) {
