@@ -36,3 +36,4 @@ function logout() {
     // Redireciona para a página de login
     window.location.href = 'login.html';
 }
+
