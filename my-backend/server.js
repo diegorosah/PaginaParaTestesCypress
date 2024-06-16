@@ -7,6 +7,7 @@ const paymentRoutes = require('./routes/pagamentos');
 const cadastroRoutes = require('./routes/cadastro');
 const dividaRoutes = require('./routes/dividas');
 const historicoRoutes = require('./routes/historicoBancario');
+const ofertaRouter = require('./routes/ofertas');
 const authMiddleware = require('./middleware/auth');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -34,6 +35,7 @@ app.get('/', (req, res) => {
 // Adicionando rotas para divida e historico
 app.use('/api/divida', dividaRoutes);
 app.use('/api/historico', historicoRoutes);
+app.use('/api/oferta', ofertaRouter);
 
 // Rotas de autenticação e protegidas
 app.use('/api', authRoutes);

@@ -67,4 +67,42 @@ router.delete('/remover/:id', authMiddleware, async (req, res) => {
     }
 });
 
+router.get('/historico-ultimos-3anos', authMiddleware, async (req, res) => {
+    try {
+        // Calcular a data de 3 anos atrás a partir de hoje
+        const hoje = new Date();
+        const ultimos3anos = new Date(hoje.getFullYear() - 3, hoje.getMonth(), hoje.getDate());
+
+        // Buscar o histórico bancário dos últimos 3 anos para o usuário logado
+        const historico = await Historico.find({
+            userId: req.userId,
+            data: { $gte: ultimos3anos, $lte: hoje }
+        });
+
+        res.json({ success: true, historico });
+    } catch (error) {
+        console.error('Erro ao recuperar histórico bancário:', error);
+        res.status(500).json({ success: false, message: 'Erro ao recuperar histórico bancário' });
+    }
+});
+
+router.get('/historico-ultimos-3meses', authMiddleware, async (req, res) => {
+    try {
+        // Calcular a data de 3 meses atrás a partir de hoje
+        const hoje = new Date();
+        const ultimos3meses = new Date(hoje.getFullYear(), hoje.getMonth() - 3, hoje.getDate());
+
+        // Buscar o histórico bancário dos últimos 3 anos para o usuário logado
+        const historico = await Historico.find({
+            userId: req.userId,
+            data: { $gte: ultimos3meses, $lte: hoje }
+        });
+
+        res.json({ success: true, historico });
+    } catch (error) {
+        console.error('Erro ao recuperar histórico bancário:', error);
+        res.status(500).json({ success: false, message: 'Erro ao recuperar histórico bancário' });
+    }
+});
+
 module.exports = router;
