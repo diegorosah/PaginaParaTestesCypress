@@ -3,16 +3,6 @@ $(document).ready(function () {
     carregarOfertas(token); // Chamando a função para carregar as ofertas
 });
 
-function abrirModalSimulacao(index) {
-    console.log('Abrindo modal para oferta', index);
-    $('#confirmModal').modal('show');
-    $('#confirmSimulation').off('click').on('click', function () {
-        console.log('Confirmação de simulação clicada');
-        $('#confirmModal').modal('hide');
-        window.location.href = `simular-oferta.html?index=${index}`;
-    });
-}
-
 function carregarOfertas(token) {
     $.ajax({
         url: '/api/oferta/ofertas',

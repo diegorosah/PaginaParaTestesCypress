@@ -23,7 +23,6 @@ $('#historicoBancario').load('historicoBancario.html', function () {
                 },
                 body: formData
             });
-            console.log('Resposta recebida:', response);
 
             if (!response.ok) {
                 throw new Error('Erro ao inserir histórico bancário: ' + response.statusText);
