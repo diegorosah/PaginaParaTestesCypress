@@ -1,5 +1,3 @@
-
-
 $('#pagamentos').load('pagamentos.html', function () {
     // Evento de clique para o botão "Agendar Pagamento"
     const agendarPagamentoBtn = document.getElementById('agendarPagamentoBtn');
@@ -81,11 +79,17 @@ $('#pagamentos').load('pagamentos.html', function () {
                 // Adicionar cada pagamento à lista
                 data.pagamentos.forEach(pagamento => {
                     const li = document.createElement('li');
-                    li.className = `list-group-item ${pagamento.pago ? 'bg-success' : (new Date(pagamento.vencimento) < Date.now() ? 'bg-danger' : '')}`;
+                    li.className = `list-group-item d-flex justify-content-between align-items-center ${pagamento.pago ? 'bg-success' : (new Date(pagamento.vencimento) < Date.now() ? 'bg-danger' : '')}`;
+
+                    const isVencido = !pagamento.pago && new Date(pagamento.vencimento) < Date.now();
+
                     li.innerHTML = `
-            ${pagamento.descricao} - R$ ${pagamento.valor.toFixed(2)} (Vencimento: ${formatDate(pagamento.vencimento)})
-            ${!pagamento.pago ? `<button class="btn btn-custom mr-2" onclick="pagar('${pagamento._id}')">Pagar</button>` : ''}
-        `;
+                        <div class="d-flex flex-column">
+                            <span>${pagamento.descricao}</span>
+                            <small>R$ ${pagamento.valor.toFixed(2)} (Vencimento: ${formatDate(pagamento.vencimento)})</small>
+                        </div>
+                        ${!pagamento.pago ? `<button class="btn ${isVencido ? 'btn-vencido' : 'btn-custom'} ml-3" onclick="pagar('${pagamento._id}')">Pagar</button>` : ''}
+                    `;
                     pagamentosList.appendChild(li);
                 });
             })
@@ -135,5 +139,4 @@ $('#pagamentos').load('pagamentos.html', function () {
                 alert('Erro ao realizar pagamento. Por favor, tente novamente.');
             });
     }
-
 });

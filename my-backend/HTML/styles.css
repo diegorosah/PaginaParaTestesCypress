@@ -99,6 +99,20 @@ body {
     height: 100%;
 }
 
+.btn-vencido {
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    background-color: black;
+    color: white;
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .card-title {
     text-align: center;
     font-size: 25px;
