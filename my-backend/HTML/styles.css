@@ -122,14 +122,14 @@ body {
 
 .card-text-strong {
     margin-left: 10%;
-    text-align: start;
+    text-align: justify;
     color: grey;
     font-weight: bold;
     font-size: 14px;
 }
 
 .card-text {
-    text-align: start;
+    text-align: justify;
     font-weight: bold;
     color: black;
     font-size: 14px;

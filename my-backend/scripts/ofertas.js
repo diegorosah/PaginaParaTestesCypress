@@ -57,16 +57,18 @@ function carregarOfertas(token) {
             if (data.success) {
                 if (data.ofertas && data.ofertas.length > 0) {
                     data.ofertas.forEach(function (oferta, index) {
+                        // Limitar o número de caracteres para os textos
+                        var tipoProduto = oferta.tipoProduto.length > 20 ? oferta.tipoProduto.substring(0, 20) + '...' : oferta.tipoProduto;
                         var ofertaHTML = `
                             <div class="card">
                                 <div class="card-body"> 
                                     <h5 class="card-title">OFERTA</h5>
-                                    <label><label class="card-text-strong">Tipo de Produto:</label> <label class="card-text">${oferta.tipoProduto}</label></label>
-                                    <label><label class="card-text-strong">Valor Mínimo de Entrada: </label> <label class="card-text"> R$ ${oferta.valorMinimoEntrada.toFixed(2)}</label></label>
-                                    <label><label class="card-text-strong">Valor Total Permitido: </label> <label class="card-text"> R$ ${oferta.valorTotalPermitido.toFixed(2)}</label></label>
-                                    <label><label class="card-text-strong">Quantidade de Parcelas: </label> <label class="card-text"> ${oferta.qtdParcelas}</label></label>
-                                    <label><label class="card-text-strong">Valor da Parcela: </label> <label class="card-text">R$ ${oferta.valorParcela.toFixed(2)}</label></label>
-                                    <label><label class="card-text-strong">Taxa de Juros: </label> <label class="card-text"> ${oferta.txJuros}%</label></label>
+                                    <p class="card-text"><span class="card-text-strong">Tipo de Produto:</span> ${tipoProduto}</p>
+                                    <p class="card-text"><span class="card-text-strong">Valor Mínimo de Entrada:</span> R$ ${oferta.valorMinimoEntrada.toFixed(2)}</p>
+                                    <p class="card-text"><span class="card-text-strong">Valor Total Permitido:</span> R$ ${oferta.valorTotalPermitido.toFixed(2)}</p>
+                                    <p class="card-text"><span class="card-text-strong">Quantidade de Parcelas:</span> ${oferta.qtdParcelas}</p>
+                                    <p class="card-text"><span class="card-text-strong">Valor da Parcela:</span> R$ ${oferta.valorParcela.toFixed(2)}</p>
+                                    <p class="card-text"><span class="card-text-strong">Taxa de Juros:</span> ${oferta.txJuros}%</p>
                                 </div>
                                 <div class="card-button-container">
                                     <button class="btn-custom abrir-modal" data-index="${index}">Ver oferta</button>
@@ -90,6 +92,20 @@ function carregarOfertas(token) {
                         infinite: false,
                         slidesToScroll: 1,
                         autoplay: false,
+                        responsive: [
+                            {
+                                breakpoint: 992,
+                                settings: {
+                                    slidesToShow: 2
+                                }
+                            },
+                            {
+                                breakpoint: 768,
+                                settings: {
+                                    slidesToShow: 1
+                                }
+                            }
+                        ]
                     });
 
                     // Adicionar botões customizados "Anterior" e "Próximo"
@@ -125,3 +141,15 @@ function carregarOfertas(token) {
         }
     });
 }
+
+// Recalcular o número de slides ao redimensionar a janela
+$(window).on('resize', function () {
+    var slidesToShow = 3;
+    if ($(window).width() < 768) {
+        slidesToShow = 1;
+    } else if ($(window).width() < 992) {
+        slidesToShow = 2;
+    }
+
+    $('#ofertas-carousel').slick('slickSetOption', 'slidesToShow', slidesToShow, true);
+});
