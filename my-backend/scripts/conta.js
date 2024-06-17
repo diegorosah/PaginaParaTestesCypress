@@ -1,4 +1,42 @@
+let saldoElement; // Definindo saldoElement fora do escopo da função load
+
+// Função para buscar o saldo atualizado
+function atualizarSaldo() {
+    // Busca o elemento saldo
+    saldoElement = document.querySelector('#saldo');
+    if (saldoElement) {
+        // Requisição para obter o saldo atualizado
+        fetch('/api/account/saldo', {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao obter saldo: ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                saldoElement.textContent = `R$ ${data.saldo.toFixed(2)}`;
+            })
+            .catch(error => {
+                console.error('Erro ao obter saldo:', error);
+                alert('Erro ao obter saldo. Verifique a conexão com o servidor e tente novamente.');
+            });
+    } else {
+        console.error('Elemento de saldo não encontrado.');
+    }
+}
+
+$(document).ready(function () {
+    // Carrega o cabeçalho e busca o elemento saldo
+    $('#header').load('header.html', atualizarSaldo);
+});
+
 $('#conta').load('conta.html', function () {
+    // Adicionando os listeners após o carregamento completo da página
     const addSaldoBtn = document.getElementById('addSaldoBtn');
     if (addSaldoBtn) {
         addSaldoBtn.addEventListener('click', async function () {
@@ -24,8 +62,13 @@ $('#conta').load('conta.html', function () {
 
                 const result = await response.json();
                 if (result.success) {
+                    // Verifica se saldoElement está definido e não é nulo
+                    if (saldoElement) {
+                        saldoElement.textContent = `R$ ${(parseFloat(saldoElement.textContent.replace('R$', '').replace(',', '.')) + valor).toFixed(2)}`;
+                    } else {
+                        console.error('Elemento de saldo não encontrado.');
+                    }
                     alert('Saldo adicionado com sucesso!');
-                    saldoElement.textContent = `R$ ${(parseFloat(saldoElement.textContent.replace('R$', '').replace(',', '.')) + valor).toFixed(2)}`;
                 } else {
                     alert('Erro ao adicionar saldo: ' + result.message);
                 }
@@ -63,7 +106,6 @@ $('#conta').load('conta.html', function () {
                 const result = await response.json();
                 if (result.success) {
                     // Atualiza o saldo na tela
-                    const saldoElement = document.querySelector('#saldo');
                     if (saldoElement) {
                         saldoElement.textContent = `R$ ${(parseFloat(saldoElement.textContent.replace('R$', '').replace(',', '.')) - valor).toFixed(2)}`;
                     }
@@ -77,4 +119,7 @@ $('#conta').load('conta.html', function () {
             }
         });
     }
-})
+});
+
+// Chama a função para buscar o saldo assim que o documento estiver pronto
+$(document).ready(atualizarSaldo);

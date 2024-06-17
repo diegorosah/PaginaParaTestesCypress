@@ -1,9 +1,37 @@
-$('#ofertas').load('ofertas.html', function () {
-    $(document).ready(function () {
+$(document).ready(function () {
+    $('#ofertas').load('ofertas.html', function () {
         const token = localStorage.getItem('token');
-        carregarOfertas(token); // Chamando a função para carregar as ofertas
+        if (!token) {
+            console.error('Token de autenticação não encontrado');
+            alert('Faça login para continuar');
+            return;
+        }
+        recalcularOfertas(token); // Recalcular ofertas antes de carregar
     });
 });
+
+// Função para recalcular as ofertas
+function recalcularOfertas(token) {
+    $.ajax({
+        url: '/api/oferta/calcular-oferta',
+        type: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + token
+        },
+        success: function (data) {
+            if (data.success) {
+                carregarOfertas(token); // Carregar as ofertas após recalcular
+            } else {
+                console.error('Erro ao recalcular ofertas:', data.message);
+                alert('Erro ao recalcular ofertas');
+            }
+        },
+        error: function (xhr, status, error) {
+            console.error('Erro ao recalcular ofertas:', error);
+            alert('Erro ao recalcular ofertas');
+        }
+    });
+}
 
 // Função para abrir o modal
 function abrirModalSimulacao(index) {
@@ -30,20 +58,20 @@ function carregarOfertas(token) {
                 if (data.ofertas && data.ofertas.length > 0) {
                     data.ofertas.forEach(function (oferta, index) {
                         var ofertaHTML = `
-        <div class="card">
-            <div class="card-body"> 
-                <h5 class="card-title">OFERTA</h5>
-                <label><label class="card-text-strong">Tipo de Produto:</label> <label class="card-text">${oferta.tipoProduto}</label></label>
-                <label><label class="card-text-strong">Valor Mínimo de Entrada: </label> <label class="card-text"> R$ ${oferta.valorMinimoEntrada.toFixed(2)}</label></label>
-                <label><label class="card-text-strong">Valor Total Permitido: </label> <label class="card-text"> R$ ${oferta.valorTotalPermitido.toFixed(2)}</label></label>
-                <label><label class="card-text-strong">Quantidade de Parcelas: </label> <label class="card-text"> ${oferta.qtdParcelas}</label></label>
-                <label><label class="card-text-strong">Valor da Parcela: </label> <label class="card-text">R$ ${oferta.valorParcela.toFixed(2)}</label></label>
-                <label><label class="card-text-strong">Taxa de Juros: </label> <label class="card-text"> ${oferta.txJuros}%</label></label>
-            </div>
-            <div class="card-button-container">
-                <button class="btn-custom abrir-modal" data-index="${index}">Ver oferta</button>
-            </div>
-        </div>`;
+                            <div class="card">
+                                <div class="card-body"> 
+                                    <h5 class="card-title">OFERTA</h5>
+                                    <label><label class="card-text-strong">Tipo de Produto:</label> <label class="card-text">${oferta.tipoProduto}</label></label>
+                                    <label><label class="card-text-strong">Valor Mínimo de Entrada: </label> <label class="card-text"> R$ ${oferta.valorMinimoEntrada.toFixed(2)}</label></label>
+                                    <label><label class="card-text-strong">Valor Total Permitido: </label> <label class="card-text"> R$ ${oferta.valorTotalPermitido.toFixed(2)}</label></label>
+                                    <label><label class="card-text-strong">Quantidade de Parcelas: </label> <label class="card-text"> ${oferta.qtdParcelas}</label></label>
+                                    <label><label class="card-text-strong">Valor da Parcela: </label> <label class="card-text">R$ ${oferta.valorParcela.toFixed(2)}</label></label>
+                                    <label><label class="card-text-strong">Taxa de Juros: </label> <label class="card-text"> ${oferta.txJuros}%</label></label>
+                                </div>
+                                <div class="card-button-container">
+                                    <button class="btn-custom abrir-modal" data-index="${index}">Ver oferta</button>
+                                </div>
+                            </div>`;
                         $('#ofertas-carousel').append(ofertaHTML);
                     });
 
@@ -62,11 +90,6 @@ function carregarOfertas(token) {
                         infinite: false,
                         slidesToScroll: 1,
                         autoplay: false,
-                    });
-
-                    $('.abrir-modal').on('click', function () {
-                        var index = $(this).data('index');
-                        abrirModalSimulacao(index);
                     });
 
                     // Adicionar botões customizados "Anterior" e "Próximo"
@@ -93,10 +116,12 @@ function carregarOfertas(token) {
                 }
             } else {
                 console.error('Erro ao buscar ofertas:', data.message);
+                alert('Erro ao buscar ofertas');
             }
         },
         error: function (xhr, status, error) {
             console.error('Erro ao buscar ofertas:', error);
+            alert('Erro ao buscar ofertas');
         }
     });
 }
