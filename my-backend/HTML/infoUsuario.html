@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados do Usuário</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <!-- Incluindo o jQuery da CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+
+<body>
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar"></div>
+    <div class="content">
+        <p><strong>
+                <h1 style="color: black;">Dados do Usuário</h1>
+            </strong></p>
+        <div id="usuario-dados">
+            <div class="container-fluid mt-4 full-width-container">
+                <div class="row">
+                    <div class="six columns" style="padding-left: 10%; padding-top: 3%;">
+                        <h2>Dados da Pessoa</h2>
+                        <p><strong>Tipo de Pessoa:</strong> <span id="usuario-tipoPessoa"></span></p>
+                        <p><strong>Nome:</strong> <span id="usuario-nome"></span></p>
+                        <p><strong>Data de Nascimento:</strong> <span id="usuario-dataNascimento"></span></p>
+                        <p><strong>CPF:</strong> <span id="usuario-cpf"></span></p>
+                        <p><strong>Telefone:</strong> <span id="usuario-telefone"></span></p>
+                        <p><strong>Email:</strong> <span id="usuario-email"></span></p>
+                        <p><strong>Estado Civil:</strong> <span id="usuario-estadoCivil"></span></p>
+                        <p><strong>Nome do Cônjuge:</strong> <span id="usuario-nomeConjuge"></span></p>
+                        <p><strong>CPF do Cônjuge:</strong> <span id="usuario-cpfConjuge"></span></p>
+                        <p><strong>Ocupação:</strong> <span id="usuario-ocupacao"></span></p>
+                        <p><strong>Renda:</strong> <span id="usuario-renda"></span></p>
+                    </div>
+                    <div class="six columns" style="padding-left: 10%; padding-top: 3%;">
+                        <h2>Endereço</h2>
+                        <p><strong>CEP:</strong> <span id="usuario-cep"></span></p>
+                        <p><strong>Endereço:</strong> <span id="usuario-endereco"></span></p>
+                        <p><strong>Número:</strong> <span id="usuario-numero"></span></p>
+                        <p><strong>Complemento:</strong> <span id="usuario-complemento"></span></p>
+                        <p><strong>Cidade:</strong> <span id="usuario-cidade"></span></p>
+                        <p><strong>Estado:</strong> <span id="usuario-estado"></span></p>
+                        <p><strong>País:</strong> <span id="usuario-pais"></span></p>
+                        <h2>Preferências de Produtos</h2>
+                        <p><strong>Produtos:</strong> <span id="usuario-preferenciasProdutos"></span></p>
+                        <p><strong>CNPJ:</strong> <span id="usuario-cnpj"></span></p>
+                        <p><strong>Nome da Empresa:</strong> <span id="usuario-nomeEmpresa"></span></p>
+                        <p><strong>Setor de Atuação:</strong> <span id="usuario-setorAtuacao"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 20px;">
+            <button class="btn-custom" onclick="window.location.href='dadosUsuario.html'"
+                style=" margin-right:10px;">Atualizar Dados</button>
+            <button class="btn-custom" onclick="window.location.href='gerenciarConta.html'">Gerenciar Conta</button>
+        </div>
+    </div>
+
+    <script src="../scripts/infoUsuario.js"></script>
+    <script src="../scripts/sidebar.js"></script>
+</body>
+
+</html>

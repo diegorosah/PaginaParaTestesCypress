@@ -16,7 +16,6 @@ function abrirModalSimulacao(index) {
     });
 }
 
-
 function carregarOfertas(token) {
     $.ajax({
         url: '/api/oferta/ofertas',
@@ -31,20 +30,20 @@ function carregarOfertas(token) {
                 if (data.ofertas && data.ofertas.length > 0) {
                     data.ofertas.forEach(function (oferta, index) {
                         var ofertaHTML = `
-                            <div class="card">
-                                <div class="card-body"> 
-                                    <h5 class="card-title">OFERTA</h5>
-                                    <label><label class="card-text-strong">Tipo de Produto:</label> <label class="card-text">${oferta.tipoProduto}</label></label>
-                                    <label><label class="card-text-strong">Valor Mínimo de Entrada: </label> <label class="card-text"> R$ ${oferta.valorMinimoEntrada.toFixed(2)}</label></label>
-                                    <label><label class="card-text-strong">Valor Total Permitido: </label> <label class="card-text"> R$ ${oferta.valorTotalPermitido.toFixed(2)}</label></label>
-                                    <label><label class="card-text-strong">Quantidade de Parcelas: </label> <label class="card-text"> ${oferta.qtdParcelas}</label></label>
-                                    <label><label class="card-text-strong">Valor da Parcela: </label> <label class="card-text">R$ ${oferta.valorParcela.toFixed(2)}</label></label>
-                                    <label><label class="card-text-strong">Taxa de Juros: </label> <label class="card-text"> ${oferta.txJuros}%</label></label>
-                                </div>
-                                <div class="card-button-container">
-                                    <button class="btn-custom abrir-modal" data-index="${index}">Ver oferta</button>
-                                </div>
-                            </div>`;
+        <div class="card">
+            <div class="card-body"> 
+                <h5 class="card-title">OFERTA</h5>
+                <label><label class="card-text-strong">Tipo de Produto:</label> <label class="card-text">${oferta.tipoProduto}</label></label>
+                <label><label class="card-text-strong">Valor Mínimo de Entrada: </label> <label class="card-text"> R$ ${oferta.valorMinimoEntrada.toFixed(2)}</label></label>
+                <label><label class="card-text-strong">Valor Total Permitido: </label> <label class="card-text"> R$ ${oferta.valorTotalPermitido.toFixed(2)}</label></label>
+                <label><label class="card-text-strong">Quantidade de Parcelas: </label> <label class="card-text"> ${oferta.qtdParcelas}</label></label>
+                <label><label class="card-text-strong">Valor da Parcela: </label> <label class="card-text">R$ ${oferta.valorParcela.toFixed(2)}</label></label>
+                <label><label class="card-text-strong">Taxa de Juros: </label> <label class="card-text"> ${oferta.txJuros}%</label></label>
+            </div>
+            <div class="card-button-container">
+                <button class="btn-custom abrir-modal" data-index="${index}">Ver oferta</button>
+            </div>
+        </div>`;
                         $('#ofertas-carousel').append(ofertaHTML);
                     });
 
@@ -60,9 +59,34 @@ function carregarOfertas(token) {
                         arrows: true,
                         focusOnSelect: true,
                         pauseOnFocus: true,
-                        Infinity: false,
+                        infinite: false,
                         slidesToScroll: 1,
                         autoplay: false,
+                    });
+
+                    $('.abrir-modal').on('click', function () {
+                        var index = $(this).data('index');
+                        abrirModalSimulacao(index);
+                    });
+
+                    // Adicionar botões customizados "Anterior" e "Próximo"
+                    $('#ofertas-carousel').append('<button id="previous" class="btn-custom-slick"><</button>');
+                    $('#ofertas-carousel').append('<button id="next" class="btn-custom-slick">></button>');
+
+                    // Gerenciar a visibilidade dos botões "Anterior" e "Próximo"
+                    $('#ofertas-carousel').on('afterChange', function (event, slick, currentSlide) {
+                        $('#previous').toggle(currentSlide !== 0);
+                        $('#next').toggle(currentSlide + slick.options.slidesToShow < slick.slideCount);
+                    });
+
+                    $('#previous').toggle(false); // Esconder o botão "Anterior" inicialmente
+
+                    $('#previous').on('click', function () {
+                        $('#ofertas-carousel').slick('slickPrev');
+                    });
+
+                    $('#next').on('click', function () {
+                        $('#ofertas-carousel').slick('slickNext');
                     });
                 } else {
                     $('#ofertas-carousel').html('<p>Sem ofertas disponíveis.</p>');

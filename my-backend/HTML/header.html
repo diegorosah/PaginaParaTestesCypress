@@ -1,12 +1,28 @@
-<div id="header">
-    <h2>Bem-vindo à sua conta, [Nome do Cliente]!</h2>
-    <div class="account-info" id="accountInfo">
-        <div class="d-flex align-items-center">
-            <h2 class="mr-2">Saldo:</h2>
-            <h2 id="saldo" class="mr-2">R$ 0,00</h2>
-            <button class="btn btn-custom-eye align-self-start" id="toggleBalanceBtn">
-                <i class="fas fa-eye-slash"></i>
-            </button>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div id="header">
+        <h2>Bem-vindo à sua conta, <span id="nomeUsuario"></span>!</h2>
+        <div class="account-info" id="accountInfo">
+            <div class="d-flex align-items-center">
+                <h2 class="mr-2">Saldo:</h2>
+                <h2 id="saldo" class="mr-2">R$ 0,00</h2>
+                <button class="btn btn-custom-eye align-self-start" id="toggleBalanceBtn">
+                    <i class="fas fa-eye-slash"></i>
+                </button>
+            </div>
         </div>
     </div>
-</div>
+
+    <script src="../scripts/header.js"></script>
+</body>
+
+</html>
